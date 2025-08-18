@@ -14,7 +14,121 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      atividades: {
+        Row: {
+          created_at: string | null
+          data_entrega: string | null
+          descricao: string | null
+          id: string
+          nota_maxima: number | null
+          status: string | null
+          tipo: string
+          titulo: string
+          turma_id: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          data_entrega?: string | null
+          descricao?: string | null
+          id?: string
+          nota_maxima?: number | null
+          status?: string | null
+          tipo?: string
+          titulo: string
+          turma_id: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          data_entrega?: string | null
+          descricao?: string | null
+          id?: string
+          nota_maxima?: number | null
+          status?: string | null
+          tipo?: string
+          titulo?: string
+          turma_id?: string
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "atividades_turma_id_fkey"
+            columns: ["turma_id"]
+            isOneToOne: false
+            referencedRelation: "turmas"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      profiles: {
+        Row: {
+          created_at: string | null
+          email: string
+          escola: string | null
+          id: string
+          nome: string
+          updated_at: string | null
+        }
+        Insert: {
+          created_at?: string | null
+          email: string
+          escola?: string | null
+          id: string
+          nome: string
+          updated_at?: string | null
+        }
+        Update: {
+          created_at?: string | null
+          email?: string
+          escola?: string | null
+          id?: string
+          nome?: string
+          updated_at?: string | null
+        }
+        Relationships: []
+      }
+      turmas: {
+        Row: {
+          ano_letivo: number
+          created_at: string | null
+          descricao: string | null
+          id: string
+          nome: string
+          professor_id: string
+          serie: string | null
+          updated_at: string | null
+        }
+        Insert: {
+          ano_letivo?: number
+          created_at?: string | null
+          descricao?: string | null
+          id?: string
+          nome: string
+          professor_id: string
+          serie?: string | null
+          updated_at?: string | null
+        }
+        Update: {
+          ano_letivo?: number
+          created_at?: string | null
+          descricao?: string | null
+          id?: string
+          nome?: string
+          professor_id?: string
+          serie?: string | null
+          updated_at?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "turmas_professor_id_fkey"
+            columns: ["professor_id"]
+            isOneToOne: false
+            referencedRelation: "profiles"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
